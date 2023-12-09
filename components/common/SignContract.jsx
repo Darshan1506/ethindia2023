@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
-const SignContract = ({ onSubmit }) => {
+const SignContract = ({ onSubmit,id }) => {
   const [formData, setFormData] = useState({
     inputField: "", // You can add more fields as needed
   });
@@ -28,7 +28,7 @@ const SignContract = ({ onSubmit }) => {
         <Input
           type="text"
           name="inputField"
-          value={formData.inputField}
+          value={id}
           onChange={handleChange}
           className="border border-gray-300 p-2 rounded-md"
         />

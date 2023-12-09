@@ -1,6 +1,7 @@
 import React from "react";
 
 const TaskCard = ({task}) => {
+  console.log(task,"taskkkk")
   return (
     <div className="w-full border border-[#FF8C33] rounded-xl p-4 mt-4 mb-4">
       <div>

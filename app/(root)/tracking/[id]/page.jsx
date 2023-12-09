@@ -7,12 +7,15 @@ import TaskCard from "@/components/common/TaskCard";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import Tracking from "@/components/common/Tracking";
+import { getProjectById } from "@/lib/actions/project.actions";
 
-const Page = () => {
+const Page = ({params}) => {
     const router = useRouter();
     const handleSubmit = ()=>{
-        router.push('/task')
+        router.push('/dashboard')
     }
+    const getContract = getProjectById(params.id)
+    console.log(getContract,"iddddddddddd");
   return (
     <div>
       <div className="flex">
@@ -20,15 +23,15 @@ const Page = () => {
           <h1 className="text-black font-faktum-test text-[2.25rem] font-bold leading-160 mb-6">
             Your Contract
           </h1>
-          <div>
+          {/* <div>
             <p className="text-gray-500 font-inter text-base font-semibold leading-7">
               project name
             </p>
             <h1 className="text-black font-inter text-3xl font-semibold leading-normal">
-              My Project
+              {getContract.projectName}
             </h1>
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             <p className="text-gray-500 font-inter text-base font-semibold leading-7 mt-4">
               description
             </p>
@@ -39,9 +42,9 @@ const Page = () => {
               tipografo prese una cassetta di caratteri e li assemblò per
               preparare un testo campione.
             </h1>
-          </div>
+          </div> */}
           <div className="mt-4">
-            <Tracking />
+            <Tracking id={params.id}/>
 
           </div>
           {/* <div className="mt-4 flex justify-end">
@@ -49,7 +52,7 @@ const Page = () => {
           </div> */}
         </div>
         <div className="w-[40%] flex items-center justify-center">
-          <img src="check.png" className="h-[400px] w-[400px]" />
+          <img src="/check.png" className="h-[400px] w-[400px]" />
         </div>
       </div>
     </div>

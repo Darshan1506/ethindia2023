@@ -35,50 +35,50 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export const data = [
-    {
-      id: "1",
-      title: "Payment 1",
-      date: "2023-01-01",
-      payment: 500,
-      stakedAmount: 1000,
-    },
-    {
-      id: "2",
-      title: "Payment 2",
-      date: "2023-02-01",
-      payment: 700,
-      stakedAmount: 1200,
-    },
-    {
-        id: "1",
-        title: "Payment 1",
-        date: "2023-01-01",
-        payment: 500,
-        stakedAmount: 1000,
-      },
-      {
-        id: "2",
-        title: "Payment 2",
-        date: "2023-02-01",
-        payment: 700,
-        stakedAmount: 1200,
-      },
-      {
-        id: "3",
-        title: "Payment 1",
-        date: "2023-01-01",
-        payment: 500,
-        stakedAmount: 1000,
-      },
-      {
-        id: "4",
-        title: "Payment 2",
-        date: "2023-02-01",
-        payment: 700,
-        stakedAmount: 1200,
-      },
-  ];
+// export const data = [
+//     {
+//       id: "1",
+//       title: "Payment 1",
+//       date: "2023-01-01",
+//       payment: 500,
+//       stakedAmount: 1000,
+//     },
+//     {
+//       id: "2",
+//       title: "Payment 2",
+//       date: "2023-02-01",
+//       payment: 700,
+//       stakedAmount: 1200,
+//     },
+//     {
+//         id: "1",
+//         title: "Payment 1",
+//         date: "2023-01-01",
+//         payment: 500,
+//         stakedAmount: 1000,
+//       },
+//       {
+//         id: "2",
+//         title: "Payment 2",
+//         date: "2023-02-01",
+//         payment: 700,
+//         stakedAmount: 1200,
+//       },
+//       {
+//         id: "3",
+//         title: "Payment 1",
+//         date: "2023-01-01",
+//         payment: 500,
+//         stakedAmount: 1000,
+//       },
+//       {
+//         id: "4",
+//         title: "Payment 2",
+//         date: "2023-02-01",
+//         payment: 700,
+//         stakedAmount: 1200,
+//       },
+//   ];
 
 export const columns = [
     {
@@ -118,18 +118,13 @@ export const columns = [
       header: "Payment",
       cell: ({ row }) => <div>{row.getValue("payment")}</div>,
     },
-    {
-      accessorKey: "stakedAmount",
-      header: "Staked Amount",
-      cell: ({ row }) => <div>{row.getValue("stakedAmount")}</div>,
-    },
   ];
   
   const completedHandler = () => {
     // Update the active row index
     setActiveRowIndex((prevIndex) => prevIndex + 1);
   };const reportHandler = ()=>{}
-export function TaskTable() {
+export function TaskTable({data}) {
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);
   const [columnVisibility, setColumnVisibility] = useState({});

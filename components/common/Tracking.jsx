@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 import SignContract from './SignContract';
 import { Button } from '../ui/button';
+import { useRouter } from 'next/navigation';
 
-const Tracking = () => {
+const Tracking = ({id}) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [stepsApproved, setStepsApproved] = useState({
     1: false,
@@ -11,6 +12,8 @@ const Tracking = () => {
     3: false,
     4: false,
   });
+
+
 
   const handleStepApproval = (step) => {
     setStepsApproved((prevStepsApproved) => ({
@@ -29,10 +32,14 @@ const Tracking = () => {
       return 'text-gray-600';
     }
   };
+  const router = useRouter()
+  const onClickHandler = ()=>{
+    router.push(`/dashboard/${id}`)
+  }
 
   return (
     <div>
-      <SignContract />
+      <SignContract id={id} />
        <div>
        <p className='text-gray-600 font-inter font-semibold text-base leading-7 mt-4' > Track Contract</p>
    </div>
@@ -69,7 +76,10 @@ const Tracking = () => {
         >
           Pay
         </Button>
-      </div>
+      </div> 
+      <Button className="bg-[#FF8C33] w-full mt-6" onClick={onClickHandler}>
+        Go to Dashboard
+      </Button>
     </div>
   );
 };

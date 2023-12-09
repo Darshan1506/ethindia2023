@@ -6,12 +6,14 @@ import { CreateTask } from "@/components/common/CreateTask";
 import TaskCard from "@/components/common/TaskCard";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { getAllTasks } from "@/lib/actions/task.actions";
 
-const Page = () => {
+const Page = async({params}) => {
     const router = useRouter();
     const handleSubmit = ()=>{
-        router.push('/task')
+        router.push(`/tracking/${params.id}`)
     }
+    const allTask = await getAllTasks();
   return (
     <div>
       <div className="flex">
@@ -40,14 +42,14 @@ const Page = () => {
             </h1>
           </div>
           <div className="mt-4">
-            <TaskCard />
+            {allTask.map((task,key)=><TaskCard task={task} key={task._id}/>)}
           </div>
           <div className="mt-4 flex justify-end">
             <Button onClick={handleSubmit} className="bg-[#FF8C33]">Go to Dashbboard</Button>
           </div>
         </div>
         <div className="w-[40%] flex items-center justify-center">
-          <img src="person.png" className="h-[400px] w-[400px]" />
+          <img src="/person.png" className="h-[400px] w-[400px]" />
         </div>
       </div>
     </div>

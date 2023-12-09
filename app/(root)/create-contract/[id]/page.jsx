@@ -4,11 +4,12 @@ import { Progress } from "@/components/ui/progress"
 import { CreateTask } from "@/components/common/CreateTask";
 import TaskCard from "@/components/common/TaskCard";
 import { getAllTasks } from "@/lib/actions/task.actions";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const Page = async({ params }) => {
   const allTasks = await getAllTasks();
-  console.log(allTasks);
-
+  console.log(allTasks,"allll task");
   return (
     <div>
       <div className="flex">
@@ -21,6 +22,7 @@ const Page = async({ params }) => {
             <TaskCard key={task._id} task={task} />
           ))}
             <CreateTask id={params.id}/>
+            
         </div>
         <div className="w-[40%] flex items-center justify-center">
             <img src="/person.png" className="h-[400px] w-[400px]"/>

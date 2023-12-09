@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { createTask } from "@/lib/actions/task.actions";
+import { useRouter } from "next/navigation";
 
 export function CreateTask({id}) {
   // State to manage form values
@@ -22,7 +23,10 @@ export function CreateTask({id}) {
     date: new Date(),
     budget: 0,
   });
-
+  const router = useRouter()
+  const handleNext = ()=>{
+      router.push(`/review-contract/${id}`)
+  }
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   // Event handler to update form data when inputs change
@@ -44,7 +48,8 @@ export function CreateTask({id}) {
   };
 
   return (
-    <Dialog>
+    <div>
+      <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline" className="w-full bg-[#FF8C33]">Add Tasks</Button>
       </DialogTrigger>
@@ -95,5 +100,12 @@ export function CreateTask({id}) {
         </DialogFooter>
       </DialogContent>
     </Dialog>
+
+    <div className="flex justify-center mt-6">
+        <Button onClick={handleNext} className="bg-[#FF8C33]">
+          Get Started
+        </Button>
+      </div>
+    </div>
   );
 }

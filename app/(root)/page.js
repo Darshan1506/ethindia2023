@@ -1,10 +1,10 @@
-import CreateContract from "@/components/common/CreateContract";
+import MainComponent from "@/components/common/MainComponent";
+import { Button } from "@/components/ui/button";
 
-async function Home() {
-
+ function Home() {
   return (
     <main className="">
-      <CreateContract />
+      <MainComponent/>
     </main>
   );
 }

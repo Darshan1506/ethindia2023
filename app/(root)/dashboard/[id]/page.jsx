@@ -8,6 +8,15 @@ import { TaskTable } from "@/components/common/TaskTable";
 
 const Page = async() => {
   const allTasks = await getAllTasks();
+  const totalBudgetSum = allTasks.reduce((sum, task) => sum + task.budget, 0);
+
+  const outputArray = allTasks.map((item, index) => ({
+    id: (index + 1).toString(),
+    title: item.taskName,
+    date: item.startDate instanceof Date ? item.startDate.toISOString().substring(0, 10) : '', // Convert to string and extract date
+    payment: item.budget,
+  }));
+  
   console.log(allTasks);
 
   return (
@@ -34,7 +43,7 @@ const Page = async() => {
         </div>
       </div>
       <div className="mx-20">
-        <TaskTable/>
+        <TaskTable data={outputArray}/>
       </div>
     </div>
   );
