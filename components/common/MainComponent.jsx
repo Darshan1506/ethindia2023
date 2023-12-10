@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 const MainComponent = () => {
     const router = useRouter()
     const handleSubmit = ()=>{
-        router.push('/projects')
+      router.push('/projects')
     }
   return (
     <div>
