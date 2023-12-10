@@ -21,6 +21,10 @@ export default function CreateContract() {
           </Button>
         </div>
       </div>
-    </main>
+
+      <button onClick={handleClick} className="bg-[#fff] ml-24 mt-8 border-4 rounded-lg border-gray-100 text-[1.5rem] text-[rgb(255,140,51)] p-[50px]">
+            + create
+          </button>    
+        </main>
   );
 }
