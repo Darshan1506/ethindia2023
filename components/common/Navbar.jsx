@@ -3,6 +3,38 @@ import React, { useState } from 'react'
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [currentAccount, setCurrentAccount] = useState('');
+    const [correctNetwork, setCorrectNetwork] = useState(false);
+    const connectWallet = async () => {
+      try {
+        const { ethereum } = window
+  
+        if (!ethereum) {
+          console.log('Metamask not detected')
+          return
+        }
+        let chainId = await ethereum.request({ method: 'eth_chainId'})
+        console.log('Connected to chain:' + chainId)
+  
+        const GoerlaChainId = '0x5'
+  
+        if (chainId !== GoerlaChainId) {
+          alert('You are not connected to the Goerla Testnet!')
+          return
+        } else {
+          setCorrectNetwork(true);
+        }
+  
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+  
+        console.log('Found account', accounts[0])
+        
+        setCurrentAccount(accounts[0])
+      } catch (error) {
+        console.log('Error connecting to metamask', error)
+      }
+    }  
+      
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -35,7 +67,7 @@ const Navbar = () => {
         >
            
       <li className="mx-6 my-4 md:my-0">
-        <a href="#" className="text-[1.25rem] font-[700] font-source-sans-3 font-[#424242] hover:text-[#087A58] duration-500">User</a>
+        <a onClick={connectWallet} className="text-[1.25rem] font-[700] font-source-sans-3 font-[#424242] hover:text-[#087A58] duration-500">{currentAccount ? currentAccount : "Connect Wallet"}</a>
       </li>
       
         </ul>
