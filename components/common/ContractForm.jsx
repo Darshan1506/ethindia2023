@@ -75,7 +75,7 @@ export function ContractForm() {
                 project name
               </FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -90,7 +90,7 @@ export function ContractForm() {
                 Description
               </FormLabel>
               <FormControl>
-                <Textarea placeholder="shadcn" {...field} />
+                <Textarea placeholder="" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
